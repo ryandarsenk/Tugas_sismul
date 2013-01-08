@@ -41,11 +41,11 @@ public class menuutama extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12));
         jLabel1.setText("MENU UTAMA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

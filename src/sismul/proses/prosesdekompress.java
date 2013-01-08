@@ -23,8 +23,8 @@ import sismul.Frame.Dekompress;
 public class prosesdekompress implements ActionListener{
     private Dekompress de;
     List<String> fileList;
-    public String INPUT_ZIP_FILE="C:\\aa.zip";
-    public String OUTPUT_FOLDER="C:\\out" ;
+    public String INPUT_ZIP_FILE;
+    public String OUTPUT_FOLDER;
     
     public prosesdekompress(Dekompress de){
     this.de=de;

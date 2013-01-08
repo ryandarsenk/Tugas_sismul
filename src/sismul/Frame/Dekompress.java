@@ -42,7 +42,6 @@ public class Dekompress extends javax.swing.JFrame {
     private File simpanfileya;
     private DefaultListModel list;
     public int b;
-     public String a;
     
     /** Creates new form Dekompress */
     public Dekompress() {
@@ -63,7 +62,9 @@ public class Dekompress extends javax.swing.JFrame {
 	}
         
     }
-     
+        public File buatdapatkanfile() {
+       return simpanfileya;
+    }
      public DefaultListModel getListModel() {
        return list;
     }
@@ -79,10 +80,7 @@ public class Dekompress extends javax.swing.JFrame {
         return Listfile;
     }
     
-     public void text(){
-     a=txtdata.getText().toString();
-     System.out.println(a);
-     }
+     
 
   
     /** This method is called from within the constructor to
@@ -189,8 +187,6 @@ public class Dekompress extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        text();
-      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -210,12 +206,11 @@ public class Dekompress extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void unZipIt(String INPUT_ZIP_FILE, String OUTPUT_FOLDER) {
-          
-     INPUT_ZIP_FILE.toString();
+     INPUT_ZIP_FILE="C:\\aa.zip";
       OUTPUT_FOLDER="C:\\out" ;
      
         
-           System.out.println(INPUT_ZIP_FILE);
+        
         byte[] buffer = new byte[1024];
  
      try{

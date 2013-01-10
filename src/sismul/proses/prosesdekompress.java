@@ -26,8 +26,7 @@ import sismul.Frame.Dekompress;
 public class prosesdekompress implements ActionListener{
     private Dekompress de;
     List<String> fileList;
-    public String INPUT_ZIP_FILE ;
-    public String OUTPUT_FOLDER;
+
     
     public prosesdekompress(Dekompress de){
     this.de=de;
@@ -46,23 +45,31 @@ if (de.buatdapatkanfile()== null) {
 		fileOutputStream = new FileOutputStream(de.buatdapatkanfile());
 		zipOutputStream = new ZipOutputStream(fileOutputStream);
 
-		byte[] buffer = new byte[2048];
-
-		Enumeration<File> enumeration = (Enumeration<File>) de.getListModel().elements();
+		
+    
+		Enumeration<ZipFile> enumeration = (Enumeration<ZipFile>) de.getListModel().elements();
 		while (enumeration.hasMoreElements()) {
 
-		    File file = enumeration.nextElement();
+		   ZipFile file = enumeration.nextElement();
 		    FileInputStream stream = null;
 
 		    try {
 
-			stream = new FileInputStream(file);
-			ZipEntry entry = new ZipEntry(file.getName());
-			  BufferedInputStream bis = new BufferedInputStream(stream);
-
-			for (int i = stream.read(buffer); i != -1; i = stream.read(buffer)) {
-			    zipOutputStream.write(buffer, 0, i);
-			}
+			
+			ZipEntry entry = (ZipEntry) file.entries();
+                        
+			  BufferedInputStream bis = new BufferedInputStream(file.getInputStream(entry));
+                       
+                          int size;
+                           byte[] buffer = new byte[2048];
+                           BufferedOutputStream bos = new BufferedOutputStream(
+                            new FileOutputStream(entry.getName()), buffer.length);
+                            while ((size = bis.read(buffer, 0, buffer.length)) != -1) {
+                             bos.write(buffer, 0, size);
+                         }
+		 bos.flush();
+      bos.close();
+      bis.close();
 
 			zipOutputStream.closeEntry();
 

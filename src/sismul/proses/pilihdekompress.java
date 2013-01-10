@@ -29,20 +29,21 @@ public class pilihdekompress  implements ActionListener {
      this.de=de;
    
     pilih=new JFileChooser();
-   
+      pilih.setMultiSelectionEnabled(true);
+    pilih.setFileSelectionMode(JFileChooser.FILES_ONLY);
     
     }
     @Override
     public void actionPerformed(ActionEvent e){
         if(pilih.showOpenDialog(de)== JFileChooser.APPROVE_OPTION){
-        File file=pilih.getCurrentDirectory();
-         
-                file = new File(file.toURI());
-           
-	    
-	   de.setFileSaveTo(file);
-      
-    	}
+            File[] files=pilih.getSelectedFiles();
+    
+        for(File file : files){
+            DefaultListModel model= de.getListModel();
+            model.addElement(file);
+    
+            }
+       }    
 	    }
     
             }

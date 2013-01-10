@@ -110,6 +110,7 @@ public class Dekompress extends javax.swing.JFrame {
         Listfile = new javax.swing.JList();
         txtdata = new javax.swing.JTextField();
         NamaFolder = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +135,13 @@ public class Dekompress extends javax.swing.JFrame {
 
         NamaFolder.setText("Nama Folder");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,9 +152,11 @@ public class Dekompress extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnkembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NamaFolder))
+                            .addComponent(NamaFolder)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1)
+                                .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(74, 74, 74)
@@ -172,7 +182,10 @@ public class Dekompress extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -193,6 +206,12 @@ public class Dekompress extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btndekompressActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         
+         System.out.println(txtdata.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,16 +223,17 @@ public class Dekompress extends javax.swing.JFrame {
     private javax.swing.JButton btndekompress;
     private javax.swing.JButton btnkembali1;
     private javax.swing.JButton btnmasukandata;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtdata;
     // End of variables declaration//GEN-END:variables
 
     public void unZipIt(String INPUT_ZIP_FILE, String OUTPUT_FOLDER) {
-     INPUT_ZIP_FILE="C:\\aa.zip";
-      OUTPUT_FOLDER="C:\\out" ;
-     
-        
+ 
+   
+     INPUT_ZIP_FILE=""+ txtdata.getText()+"";
+      OUTPUT_FOLDER="C:out";  
         
         byte[] buffer = new byte[1024];
  

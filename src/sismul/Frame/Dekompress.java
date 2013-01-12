@@ -10,7 +10,8 @@
  */
 package sismul.Frame;
 
-
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -44,6 +45,11 @@ public class Dekompress extends javax.swing.JFrame {
         btnmasukandata.addActionListener(new pilihdekompress(this));   
       btndekompress.addActionListener(new prosesdekompress(this));
     
+    
+    }
+          public void close_Jframe(){
+    WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     
     }
     public JButton simpanfile(){
@@ -129,6 +135,11 @@ public class Dekompress extends javax.swing.JFrame {
         });
 
         btnkembali1.setText("Kembali");
+        btnkembali1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkembali1ActionPerformed(evt);
+            }
+        });
 
         NamaFolder.setText("Nama Folder");
 
@@ -193,6 +204,12 @@ public class Dekompress extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btndekompressActionPerformed
+
+    private void btnkembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkembali1ActionPerformed
+        // TODO add your handling code here:
+        new menuutama().setVisible(true);
+        close_Jframe();
+    }//GEN-LAST:event_btnkembali1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -67,8 +67,8 @@ public String INPUT_ZIP_FILE;
  
     	   String fileName = ze.getName();
            File newFile = new File(OUTPUT_FOLDER + File.separator + fileName);
- 
-           System.out.println("file unzip : "+ newFile.getAbsoluteFile());
+      
+          
  
             //create all non exists folders
             //else you will hit FileNotFoundException for compressed folder
@@ -88,15 +88,20 @@ public String INPUT_ZIP_FILE;
         zis.closeEntry();
     	zis.close();
  
-    	System.out.println("Done");
+    	JOptionPane.showMessageDialog(de, "Dekompress File Berhasil");
  
     }catch(IOException ex){
        ex.printStackTrace(); 
     }
   
 }
-        
+        reset();
     }
+     public void reset(){
+     de.dapatkanfile().setText("");     
+      de.Outputkeluaran().setText("");    
+     }
+     
      public void showMessage(String message) {
 	JOptionPane.showMessageDialog(de, message);
      }

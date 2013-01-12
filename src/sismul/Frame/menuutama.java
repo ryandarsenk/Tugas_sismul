@@ -11,7 +11,8 @@
 package sismul.Frame;
 
 import javax.swing.JButton;
-
+import java.awt.*;
+import java.awt.event.*;
 
 
 /**
@@ -23,8 +24,13 @@ public class menuutama extends javax.swing.JFrame {
     /** Creates new form menuutama */
     public menuutama() {
         initComponents();
+ 
     }
-
+       public void close_Jframe(){
+    WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    
+    }
     public void pindahkekompresi()
     {
     new Form().setVisible(true);
@@ -152,18 +158,20 @@ public class menuutama extends javax.swing.JFrame {
 
     private void BtnKompresiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKompresiActionPerformed
         // TODO add your handling code here:
-      
+
         pindahkekompresi();
+        close_Jframe();
     }//GEN-LAST:event_BtnKompresiActionPerformed
 
     private void BtnDekompresiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDekompresiActionPerformed
         // TODO add your handling code here:
       pindahkedekompresi();
+       close_Jframe();
     }//GEN-LAST:event_BtnDekompresiActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

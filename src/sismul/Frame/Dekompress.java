@@ -10,24 +10,12 @@
  */
 package sismul.Frame;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
+
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JList;
-import sismul.proses.simpanfile;
-import sismul.proses.pilihfile;
-import sismul.proses.hapusfile;
-import sismul.proses.kompress;
-import sismul.Frame.menuutama;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import sismul.proses.pilihdekompress;
 import sismul.proses.prosesdekompress;
 import sismul.proses.simpanfiledekompresi;
@@ -124,7 +112,7 @@ public class Dekompress extends javax.swing.JFrame {
         NamaFolder = new javax.swing.JButton();
         txtout = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnmasukandata.setText("Pilih File");
         btnmasukandata.addActionListener(new java.awt.event.ActionListener() {

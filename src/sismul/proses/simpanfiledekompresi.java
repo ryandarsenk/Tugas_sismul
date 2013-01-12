@@ -29,12 +29,13 @@ public class simpanfiledekompresi implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e){
-        if(pilih.showOpenDialog(de)==JFileChooser.APPROVE_OPTION){
+        if(pilih.showSaveDialog(de)==JFileChooser.APPROVE_OPTION){
             File file=pilih.getSelectedFile();
-            if (!pilih.getSelectedFile().getName().toLowerCase().endsWith(".zip")) {
-		file = new File(file.getParent());
-	    }
-	    de.setFileSaveTo(file);
+             
+		file = new File(file.getPath());
+	   
+	    
+	    de.outputnya(file);
         
         
         }

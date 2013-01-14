@@ -20,14 +20,5 @@ public class hapusfile implements ActionListener {
     this.form=form;
     
     }
-    @Override
-    public void actionPerformed(ActionEvent event) {
-	Object[] selecteds = form.dapatkanfilelist().getSelectedValues();
-	if (selecteds.length != 0) {
-	    DefaultListModel model = form.getListModel();
-	    for (Object e : selecteds) {
-		model.removeElement(e);
-	    }
-	}
-    }
+   
 }

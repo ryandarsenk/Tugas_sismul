@@ -19,7 +19,7 @@ public class hapusfile implements ActionListener {
     public hapusfile(Form form){
     this.form=form;
 //proses 
-
+}
      @Override
     public void actionPerformed(ActionEvent event) {
 	Object[] selecteds = form.dapatkanfilelist().getSelectedValues();
@@ -32,4 +32,3 @@ public class hapusfile implements ActionListener {
     }
     }
    
-}

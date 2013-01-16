@@ -28,7 +28,7 @@ import sismul.Frame.menuutama;
  * @author wildan
  */
 public class Form extends javax.swing.JFrame {
-
+//variabel 
     
     private File simpanfileya;
     private DefaultListModel list;

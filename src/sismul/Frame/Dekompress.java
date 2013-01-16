@@ -37,11 +37,10 @@ import sismul.proses.prosesdekompress;
  */
 public class Dekompress extends javax.swing.JFrame {
 
- List<String> fileList;
   
     private File simpanfileya;
     private DefaultListModel list;
-    public int b;
+    
     
     /** Creates new form Dekompress */
     public Dekompress() {
@@ -77,8 +76,11 @@ public class Dekompress extends javax.swing.JFrame {
     public JList dapatkanfilelist() {
         return Listfile;
     }
-    
-     
+    public File buatdapatkanfile(){
+
+        return simpanfileya;
+    }
+
 
   
     /** This method is called from within the constructor to
@@ -118,6 +120,12 @@ public class Dekompress extends javax.swing.JFrame {
 
         Listfile.setEnabled(false);
         jScrollPane1.setViewportView(Listfile);
+
+        txtdata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,6 +178,10 @@ public class Dekompress extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btndekompressActionPerformed
 
+    private void txtdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,53 +202,7 @@ public class Dekompress extends javax.swing.JFrame {
      
         
         
-        byte[] buffer = new byte[1024];
- 
-     try{
- 
-    	//create output directory is not exists
-    	File folder = new File(OUTPUT_FOLDER);
-    	if(!folder.exists()){
-    		folder.mkdir();
-    	}
- 
-    	//get the zip file content
-    	ZipInputStream zis = 
-    		new ZipInputStream(new FileInputStream(INPUT_ZIP_FILE));
-    	//get the zipped file list entry
-    	ZipEntry ze = zis.getNextEntry();
- 
-    	while(ze!=null){
- 
-    	   String fileName = ze.getName();
-           File newFile = new File(OUTPUT_FOLDER + File.separator + fileName);
- 
-           System.out.println("file unzip : "+ newFile.getAbsoluteFile());
- 
-            //create all non exists folders
-            //else you will hit FileNotFoundException for compressed folder
-            new File(newFile.getParent()).mkdirs();
- 
-            FileOutputStream fos = new FileOutputStream(newFile);             
- 
-            int len;
-            while ((len = zis.read(buffer)) > 0) {
-       		fos.write(buffer, 0, len);
-            }
- 
-            fos.close();   
-            ze = zis.getNextEntry();
-    	}
- 
-        zis.closeEntry();
-    	zis.close();
- 
-    	System.out.println("Done");
- 
-    }catch(IOException ex){
-       ex.printStackTrace(); 
     }
-   } 
     }
 
 

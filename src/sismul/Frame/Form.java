@@ -10,6 +10,8 @@
  */
 package sismul.Frame;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -45,7 +47,11 @@ public class Form extends javax.swing.JFrame {
         // btnhapusfile.addActionListener(new Prosehapus(this));
     }
     
+        public void close_Jframe(){
+    WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     
+    }
        public File buatdapatkanfile() {
        return simpanfileya;
     }
@@ -175,6 +181,7 @@ public class Form extends javax.swing.JFrame {
     private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         // TODO add your handling code here:
         new menuutama().setVisible(true);
+        close_Jframe();
     }//GEN-LAST:event_kembaliActionPerformed
 
     /**

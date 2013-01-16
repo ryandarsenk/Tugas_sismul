@@ -10,26 +10,16 @@
  */
 package sismul.Frame;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JList;
-import sismul.proses.simpanfile;
-import sismul.proses.pilihfile;
-import sismul.proses.hapusfile;
-import sismul.proses.kompress;
-import sismul.Frame.menuutama;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import sismul.proses.pilihdekompress;
 import sismul.proses.prosesdekompress;
+import sismul.proses.simpanfiledekompresi;
 
 /**
  *
@@ -40,18 +30,38 @@ public class Dekompress extends javax.swing.JFrame {
   
     private File simpanfileya;
     private DefaultListModel list;
+<<<<<<< HEAD
     
     
+=======
+    public int b;
+
+>>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
     /** Creates new form Dekompress */
     public Dekompress() {
         initComponents();
    
+
         
         list = new DefaultListModel();
-        Listfile.setModel(list);
+     
+        NamaFolder.addActionListener(new simpanfiledekompresi(this));
         btnmasukandata.addActionListener(new pilihdekompress(this));   
       btndekompress.addActionListener(new prosesdekompress(this));
+    
+    
     }
+          public void close_Jframe(){
+    WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    
+    }
+    public JButton simpanfile(){
+    
+    return NamaFolder;
+    }
+    
+    
     public void setFileSaveTo(File file) {
        this.simpanfileya = file;
 	if (file == null) {
@@ -61,7 +71,19 @@ public class Dekompress extends javax.swing.JFrame {
 	}
         
     }
-     
+    
+       public void outputnya(File file) {
+       this.simpanfileya = file;
+	if (file == null) {
+	    txtout.setText("eweuhan");
+	} else {
+	    txtout.setText(simpanfileya.getPath());
+	}
+    }
+    
+        public File buatdapatkanfile() {
+       return simpanfileya;
+    }
      public DefaultListModel getListModel() {
        return list;
     }
@@ -73,14 +95,22 @@ public class Dekompress extends javax.swing.JFrame {
     return btnmasukandata;
     
     }
-    public JList dapatkanfilelist() {
-        return Listfile;
+ 
+       public JTextField dapatkanfile() {
+        return txtdata;
     }
+<<<<<<< HEAD
     public File buatdapatkanfile(){
 
         return simpanfileya;
     }
 
+=======
+     
+       public JTextField Outputkeluaran() {
+        return txtout;
+    }
+>>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
 
   
     /** This method is called from within the constructor to
@@ -96,11 +126,11 @@ public class Dekompress extends javax.swing.JFrame {
         btnmasukandata = new javax.swing.JButton();
         btndekompress = new javax.swing.JButton();
         btnkembali1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Listfile = new javax.swing.JList();
         txtdata = new javax.swing.JTextField();
+        NamaFolder = new javax.swing.JButton();
+        txtout = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnmasukandata.setText("Pilih File");
         btnmasukandata.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +147,13 @@ public class Dekompress extends javax.swing.JFrame {
         });
 
         btnkembali1.setText("Kembali");
+        btnkembali1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkembali1ActionPerformed(evt);
+            }
+        });
 
-        Listfile.setEnabled(false);
-        jScrollPane1.setViewportView(Listfile);
+        NamaFolder.setText("Nama Folder");
 
         txtdata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,37 +167,48 @@ public class Dekompress extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnkembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
-                            .addComponent(btndekompress, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(15, 15, 15))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(44, 44, 44)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnkembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btndekompress, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NamaFolder)
+                            .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtout))))
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel1)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NamaFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btndekompress, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnkembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                    .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnmasukandata, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnkembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btndekompress, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -178,9 +223,17 @@ public class Dekompress extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btndekompressActionPerformed
 
+<<<<<<< HEAD
     private void txtdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdataActionPerformed
+=======
+    private void btnkembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkembali1ActionPerformed
+        // TODO add your handling code here:
+        new menuutama().setVisible(true);
+        close_Jframe();
+    }//GEN-LAST:event_btnkembali1ActionPerformed
+>>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
 
     /**
      * @param args the command line arguments
@@ -188,21 +241,27 @@ public class Dekompress extends javax.swing.JFrame {
     
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList Listfile;
+    private javax.swing.JButton NamaFolder;
     private javax.swing.JButton btndekompress;
     private javax.swing.JButton btnkembali1;
     private javax.swing.JButton btnmasukandata;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtdata;
+    private javax.swing.JTextField txtout;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< HEAD
     public void unZipIt(String INPUT_ZIP_FILE, String OUTPUT_FOLDER) {
       
      
         
         
     }
+=======
+ 
+
+   
+>>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
     }
 
 

@@ -27,16 +27,12 @@ import sismul.proses.simpanfiledekompresi;
  */
 public class Dekompress extends javax.swing.JFrame {
 
+ List<String> fileList;
   
     private File simpanfileya;
     private DefaultListModel list;
-<<<<<<< HEAD
-    
-    
-=======
     public int b;
 
->>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
     /** Creates new form Dekompress */
     public Dekompress() {
         initComponents();
@@ -99,18 +95,10 @@ public class Dekompress extends javax.swing.JFrame {
        public JTextField dapatkanfile() {
         return txtdata;
     }
-<<<<<<< HEAD
-    public File buatdapatkanfile(){
-
-        return simpanfileya;
-    }
-
-=======
      
        public JTextField Outputkeluaran() {
         return txtout;
     }
->>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
 
   
     /** This method is called from within the constructor to
@@ -154,12 +142,6 @@ public class Dekompress extends javax.swing.JFrame {
         });
 
         NamaFolder.setText("Nama Folder");
-
-        txtdata.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdataActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,17 +205,11 @@ public class Dekompress extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btndekompressActionPerformed
 
-<<<<<<< HEAD
-    private void txtdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtdataActionPerformed
-=======
     private void btnkembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkembali1ActionPerformed
         // TODO add your handling code here:
         new menuutama().setVisible(true);
         close_Jframe();
     }//GEN-LAST:event_btnkembali1ActionPerformed
->>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
 
     /**
      * @param args the command line arguments
@@ -250,18 +226,9 @@ public class Dekompress extends javax.swing.JFrame {
     private javax.swing.JTextField txtout;
     // End of variables declaration//GEN-END:variables
 
-<<<<<<< HEAD
-    public void unZipIt(String INPUT_ZIP_FILE, String OUTPUT_FOLDER) {
-      
-     
-        
-        
-    }
-=======
  
 
    
->>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
     }
 
 

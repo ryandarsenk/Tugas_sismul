@@ -35,18 +35,6 @@ public class pilihdekompress  implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e){
-<<<<<<< HEAD
-      if(pilih.showOpenDialog(de)== JFileChooser.APPROVE_OPTION){
-            File[] files=pilih.getSelectedFiles();
-
-        for(File file : files){
-            DefaultListModel model= de.getListModel();
-            model.addElement(file);
-
-            }
-       }
-
-=======
         if(pilih.showOpenDialog(de)== JFileChooser.APPROVE_OPTION){
              File file=pilih.getSelectedFile();
             if (!pilih.getSelectedFile().getName().toLowerCase().endsWith(".zip")) {
@@ -56,7 +44,6 @@ public class pilihdekompress  implements ActionListener {
         
         
        }    
->>>>>>> 38f88c38fd24c973b8aa665bf148092d109e60cc
 	    }
     
             }
